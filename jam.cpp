@@ -113,7 +113,7 @@ void renderScene(void){
 void timer(int value){
  sudut-=6;
  glutPostRedisplay();
- glutTimerFunc(100,timer,0);
+ glutTimerFunc(360*3,timer,0);
 }
 int main (int argc, char **argv){
  glutInit(&argc, argv);
