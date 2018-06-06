@@ -19,14 +19,14 @@ void lingkaran(int radius, int jumlah_titik, int x_tengah, int y_tengah) {
 void panahJam(){
  glBegin(GL_POLYGON);
  glColor3f(0,0,0);
- glVertex2i(0,200);
- glVertex2i(10,180);
- glVertex2i(5,180);
+ glVertex2i(0,140);
+ glVertex2i(10,120);
+ glVertex2i(5,120);
  glVertex2i(5,0);
  glVertex2i(-5,0);
- glVertex2i(-5,180);
- glVertex2i(-10,180);
- glVertex2i(0,200);
+ glVertex2i(-5,120);
+ glVertex2i(-10,120);
+ glVertex2i(0,140);
  glEnd();
 }
 
@@ -119,7 +119,7 @@ int main (int argc, char **argv){
  glutInit(&argc, argv);
  glutInitWindowPosition(100,100);
  glutInitWindowSize(300,300);
- glutCreateWindow("JAM ANALOG");
+ glutCreateWindow("JAM DINDING");
  gluOrtho2D(-300.,300.,-300.,300.);
  glutDisplayFunc(renderScene);
  glutTimerFunc(1,timer,0);
