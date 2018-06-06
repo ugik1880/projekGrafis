@@ -90,18 +90,18 @@ void renderScene(void){
  glPopMatrix();
 
  glPushMatrix();
- glRotatef(sudut,0,0,1);
- panahDetik();
+ glRotatef(sudut/720,0,0,1);
+ panahJam();
  glPopMatrix();
 
  glPushMatrix();
  glRotatef(sudut/60,0,0,1);
  panahMenit();
- glPopMatrix();
-
+ glPopMatrix(); 
+ 
  glPushMatrix();
- glRotatef(sudut/720,0,0,1);
- panahJam();
+ glRotatef(sudut,0,0,1);
+ panahDetik();
  glPopMatrix();
  
  glColor3f(0,0,0);
