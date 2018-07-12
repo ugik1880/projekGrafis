@@ -19,6 +19,33 @@ void lingkaran(int radius, int jumlah_titik, int x_tengah, int y_tengah) {
 void panahJam(){
  glBegin(GL_POLYGON);
  glColor3f(0,0,0);
+ glVertex2i(0,80);
+ glVertex2i(10,60);
+ glVertex2i(5,60);
+ glVertex2i(5,0);
+ glVertex2i(-5,0);
+ glVertex2i(-5,60);
+ glVertex2i(-10,60);
+ glVertex2i(0,80);
+ glEnd();
+}
+
+void panahMenit(){
+ glBegin(GL_POLYGON);
+ glColor3f(1,1,1);
+ glVertex2i(0,120);
+ glVertex2i(10,100);
+ glVertex2i(5,100);
+ glVertex2i(5,0);
+ glVertex2i(-5,0);
+ glVertex2i(-5,100);
+ glVertex2i(-10,100);
+ glVertex2i(0,120);
+ glEnd();
+}
+void panahDetik(){
+ glBegin(GL_POLYGON);
+ glColor3f(1,0,0); 
  glVertex2i(0,140);
  glVertex2i(10,120);
  glVertex2i(5,120);
@@ -27,33 +54,6 @@ void panahJam(){
  glVertex2i(-5,120);
  glVertex2i(-10,120);
  glVertex2i(0,140);
- glEnd();
-}
-
-void panahMenit(){
- glBegin(GL_POLYGON);
- glColor3f(1,1,1);
- glVertex2i(0,220);
- glVertex2i(10,200);
- glVertex2i(5,200);
- glVertex2i(5,0);
- glVertex2i(-5,0);
- glVertex2i(-5,200);
- glVertex2i(-10,200);
- glVertex2i(0,220);
- glEnd();
-}
-void panahDetik(){
- glBegin(GL_POLYGON);
- glColor3f(1,0,0);
- glVertex2i(0,240);
- glVertex2i(10,210);
- glVertex2i(5,210);
- glVertex2i(5,0);
- glVertex2i(-5,0);
- glVertex2i(-5,210);
- glVertex2i(-10,210);
- glVertex2i(0,240);
  glEnd();
 }
 
@@ -77,18 +77,15 @@ void menit(float jarak, float x, float y) {
  glEnd();
 }
 
-void renderScene(void){
+void display(){
  glClear(GL_COLOR_BUFFER_BIT);
  glClearColor(1,1,1,1);
-
- glPushMatrix();
- glColor3f(0.7,0.7,0.7);
- lingkaran(250,100,0,0);
-
- angka(230.,0.,0.);
- menit(230.,0.,0.);
- glPopMatrix();
-
+ 
+ glColor3f(1,1,0);
+ lingkaran(150,100,0,0); 
+ 
+ menit(130,0,0); 
+ angka(130,0,0);
  glPushMatrix();
  glRotatef(sudut/720,0,0,1);
  panahJam();
@@ -105,7 +102,7 @@ void renderScene(void){
  glPopMatrix();
  
  glColor3f(0,0,0);
- lingkaran(20,100,0,0);
+ lingkaran(10,100,0,0);
 
  glFlush();
 }
@@ -118,10 +115,10 @@ void timer(int value){
 int main (int argc, char **argv){
  glutInit(&argc, argv);
  glutInitWindowPosition(100,100);
- glutInitWindowSize(300,300);
+ glutInitWindowSize(500,500);
  glutCreateWindow("JAM DINDING");
  gluOrtho2D(-300.,300.,-300.,300.);
- glutDisplayFunc(renderScene);
+ glutDisplayFunc(display);
  glutTimerFunc(1,timer,0);
  glutMainLoop();
 }
