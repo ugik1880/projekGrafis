@@ -32,7 +32,7 @@ void panahJam(){
 
 void panahMenit(){
  glBegin(GL_POLYGON);
- glColor3f(1,1,1);
+ glColor3f(0.5,1,0);
  glVertex2i(0,120);
  glVertex2i(10,100);
  glVertex2i(5,100);
@@ -56,6 +56,35 @@ void panahDetik(){
  glVertex2i(0,140);
  glEnd();
 }
+void kotak1(){
+	glBegin(GL_POLYGON);
+	glColor3f(0.5,0.5,0.5);
+	
+	glVertex2i(90,200);
+	glVertex2i(90,-250);
+	glVertex2i(-90,-250);
+	glVertex2i(-90,200);
+	glEnd();
+}
+void kotak2(){
+	glBegin(GL_POLYGON);
+	glColor3f(1,0.5,0);
+	
+	glVertex2i(75,200);
+	glVertex2i(75,-250);
+	glVertex2i(-75,-250);
+	glVertex2i(-75,200);
+	glEnd();
+}
+void bandul(){
+  glBegin(GL_POLYGON);
+  	glColor3f(1,1,1);
+ 	glVertex2i(-5,0);
+	glVertex2i(5,0);
+	glVertex2i(5,-150);
+	glVertex2i(-5,-150);
+  glEnd();
+}
 
 void angka(float jarak, float x, float y) {
  glPointSize(10);
@@ -77,11 +106,21 @@ void menit(float jarak, float x, float y) {
  glEnd();
 }
 
+GLfloat angle = 0.0f;
+GLfloat direction = 25.0f;
+
 void display(){
- glClear(GL_COLOR_BUFFER_BIT);
- glClearColor(1,1,1,1);
+ glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+ glClearColor(0,0,0,0);
  
- glColor3f(1,1,0);
+ kotak1();
+ 
+ kotak2();
+  
+ glColor3f(1,1,1);
+ lingkaran(170,100,0,0);  
+ 
+ glColor3f(0.5,0.5,0.5);
  lingkaran(150,100,0,0); 
  
  menit(130,0,0); 
@@ -102,8 +141,21 @@ void display(){
  glPopMatrix();
  
  glColor3f(0,0,0);
- lingkaran(10,100,0,0);
+ lingkaran(10,100,0,0); 
+ 
+glPushMatrix();
+  glTranslatef(1, -100, 0);
+  glRotatef(angle, 0, 0, 1);
+  bandul();
 
+glPopMatrix();
+  
+  angle += direction;
+  if (angle >= 25 || angle <= -25) {
+    direction = -direction;
+  }
+ 
+ 
  glFlush();
 }
 
@@ -112,6 +164,7 @@ void timer(int value){
  glutPostRedisplay();
  glutTimerFunc(360*3,timer,0);
 }
+  
 int main (int argc, char **argv){
  glutInit(&argc, argv);
  glutInitWindowPosition(100,100);
