@@ -113,9 +113,14 @@ void display(){
  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
  glClearColor(0,0,0,0);
  
- kotak1();
- 
+ kotak1(); 
  kotak2();
+ 
+ glPushMatrix();
+  glTranslatef(1, -100, 0);
+  glRotatef(angle, 0, 0, 1);
+  bandul();
+glPopMatrix();
   
  glColor3f(1,1,1);
  lingkaran(170,100,0,0);  
@@ -143,12 +148,7 @@ void display(){
  glColor3f(0,0,0);
  lingkaran(10,100,0,0); 
  
-glPushMatrix();
-  glTranslatef(1, -100, 0);
-  glRotatef(angle, 0, 0, 1);
-  bandul();
 
-glPopMatrix();
   
   angle += direction;
   if (angle >= 25 || angle <= -25) {
