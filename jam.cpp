@@ -93,19 +93,17 @@ void initGL() {
 			}
 				void bandul(){
 				glBegin(GL_POLYGON);
-				glColor3f(1,0,0);
-				
-				glVertex2f(0,-24);
-				glVertex2f(3,-24);
-				glVertex2f(3,-18);
+				glColor3f(1,1,1);
 				glVertex2f(0.5,-18);
 				glVertex2f(0.5,0);
-				glVertex2f(-0.5,0);
-				glVertex2f(-0.5,-18);
-				glVertex2f(-3,-18);
-				glVertex2f(-3,-24);
-				glVertex2f(0,-24);
-				glEnd();
+				glVertex2f(-0.5,0);				
+				glVertex2f(-0.5,-18);			
+				glEnd();				
+				glTranslatef(0.0f, -18.0f, 0.02f);
+				lingkaran(4.5,100,0,0);
+				glTranslatef(0.0f, 0.0f, 0.02f);
+				glColor3f(0.5,0.5,0.5);
+				lingkaran(4.,100,0,0);
 			}		
 
 
@@ -117,7 +115,7 @@ void display() {
   glTranslatef(0.0f, 4.0f, -80.0f);
  // glRotatef(jam1, 0.0f, 1.0f, 0.0f);
   
-  glColor3f(1,1,1);//warna putih
+  glColor3f(1,1,1);;//warna putih
   lingkaran(20,100,0,0);
   
   
