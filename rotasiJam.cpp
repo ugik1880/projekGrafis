@@ -7,6 +7,12 @@
         #include <math.h>
          
         #define  RADDEG  57.29577951f
+        
+        #define PI 3.1415926535
+		float sudut = 0;
+		
+		int i;
+		int n;
          
         float XUP[3] = {1,0,0}, XUN[3] = {-1, 0, 0},
               YUP[3] = {0,1,0}, YUN[3] = { 0,-1, 0},
@@ -113,6 +119,37 @@
          
             glEnd();
         }
+		 void lingkaran(int radius, int jumlah_titik, int x_tengah, int y_tengah) {
+		 glBegin(GL_POLYGON);
+		 for (i=0;i<=360;i++){
+		        float sudut=i*(2*PI/jumlah_titik);
+		        float x=x_tengah+radius*cos(sudut);
+		        float y=y_tengah+radius*sin(sudut);
+		  glVertex2f(x,y);
+		 }
+		 glEnd();
+		}
+		
+		void kotak1(){
+			glBegin(GL_POLYGON);
+			glColor3f(0.5,0.5,0.5);
+			
+			glVertex2i(1.5,5);
+			glVertex2i(1.5,-5);
+			glVertex2i(-1.5,-5);
+			glVertex2i(-1.5,5);
+			glEnd();
+		}
+		void panahDetik(){
+			 glBegin(GL_POLYGON);
+			 glColor3f(1,0,0); 
+			 glVertex2i(-1,0);
+			 glVertex2i(-1,3);
+			 glVertex2i(1,3);
+			 glVertex2i(1,0);
+			 
+			 glEnd();
+			}
          
         //---+----3----+----2----+----1----+---<>---+----1----+----2----+----3----+----4
          
@@ -139,7 +176,21 @@
                glRotatef (zAngle, 0,0,1);
                glRotatef (yAngle, 0,1,0);
                glRotatef (xAngle, 1,0,0);
-               Draw_Box ();
+               
+               	//
+               	
+                glPushMatrix();
+					glRotatef(sudut,0,0,1);
+					panahDetik();
+				glPopMatrix();
+								
+				glTranslatef(0,0,-0.001);
+               	glColor3f(1,1,0);
+                lingkaran(4.5,100,0,0);
+				  
+                glTranslatef(0,0,-0.001);
+                kotak1();
+            	//
             glPopMatrix ();
          
             glutSwapBuffers();
@@ -147,15 +198,22 @@
          
         //---+----3----+----2----+----1----+---<>---+----1----+----2----+----3----+----4
          
+         
+         void timer(int value){
+			 sudut-=6; 
+			 glutPostRedisplay();
+			 glutTimerFunc(360*3,timer,0);
+		}
         int main (int argc, char **argv)
         {
             glutInit               (&argc, argv);
             glutInitWindowSize     (900, 600);
-            glutInitWindowPosition (300, 300);
+            glutInitWindowPosition (200, 100);
             glutInitDisplayMode    (GLUT_DEPTH | GLUT_DOUBLE);
          
-            glutCreateWindow ("Orbital Font Demo");
+            glutCreateWindow ("Jam");
             glutDisplayFunc  (   redraw   );
+            glutTimerFunc	 (	1,timer,0 );
             glutKeyboardFunc (  Keyboard  );
             glutSpecialFunc  (Special_Keys);
          
