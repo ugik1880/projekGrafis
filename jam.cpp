@@ -152,7 +152,7 @@ void display() {
    glColor3f(0,0,0);
  lingkaran(1,100,0,0); 
  
- glTranslatef(0.0f, -9.0f, 0.1f);
+ glTranslatef(0.0f, -9.0f, -0.7f);
   glPushMatrix();
   glRotatef(angle,0,0,1);
   bandul();
@@ -175,7 +175,7 @@ angle += direction;
 void timer(int value) {
   	sudut-=6; 
 	glutPostRedisplay();
-	glutTimerFunc(369*3,timer,0);
+	glutTimerFunc(360*3,timer,0);
 }
 
 void reshape(GLsizei width, GLsizei height) {
@@ -200,4 +200,5 @@ int main(int argc, char** argv) {
   glutMainLoop();
   return 0;
 }
+
 
