@@ -194,7 +194,7 @@ int main(int argc, char** argv) {
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH);
   glutInitWindowSize(480, 600);
   glutInitWindowPosition(50, 50);
-  glutCreateWindow("3d-animation");
+  glutCreateWindow("Jam");
   glutDisplayFunc(display);
   glutReshapeFunc(reshape);
   initGL();
