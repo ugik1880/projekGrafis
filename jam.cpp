@@ -14,6 +14,8 @@ float sudut = 0;
 int i;
 int n;
 
+int x = 0;
+
 
 void initGL() {
 	glClearColor(0.5,0.5,0.1,0);    
@@ -128,13 +130,23 @@ void kotak2(){
 	glEnd();
 }
 
+void myKeyboard(unsigned char key,int x1,int y){
+
+	if(key == 'k'){
+		x=x-10;	
+	}
+	else if(key =='l'){
+		x=x+10;
+	}
+}
+
 void display() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glMatrixMode(GL_MODELVIEW);
 //
 	glLoadIdentity();
 	glTranslatef(0.0f, 4.0f, -80.0f);
-//	glRotatef(jam1, 0.0f, 1.0f, 0.0f);
+	glRotatef(x, 0.0f, 1.0f, 0.0f);
 
 
 	kotak1();
@@ -191,7 +203,7 @@ void display() {
 	}
 	//
 	glutSwapBuffers();
-	//jam1 += 0.2f;
+//	jam1 += 10.0f;
 }
 
 void timer(int value) {
@@ -219,8 +231,10 @@ int main(int argc, char** argv) {
 	glutReshapeFunc(reshape);
 	initGL();
 	glutTimerFunc(0, timer, 0);
+	glutKeyboardFunc(myKeyboard);
 	glutMainLoop();
 	return 0;
 }
+
 
 
