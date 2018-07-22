@@ -6,16 +6,12 @@
 #include <stdlib.h>
 #include <math.h>
 
-GLfloat jam1 = 0.0f;
 GLfloat angle = 0.0f;
 GLfloat direction = 25.0f;
-
-float sudut = 0;
+GLfloat sudut = 0;
 int i;
 int n;
-
-int x = 0;
-
+int x;
 
 void initGL() {
 	glClearColor(0.5,0.5,0.1,0);    
@@ -44,6 +40,7 @@ void angka(float jarak, float x, float y) {
 		glVertex2f(jarak*(float)sin(n*PI/180.0)+x,jarak*(float)cos(n*PI/180.0)+y);
 	glEnd();
 }
+
 void menit(float jarak, float x, float y) {
 	glPointSize(2); //Mengatur besar titik
 	glBegin(GL_POINTS);
@@ -52,7 +49,7 @@ void menit(float jarak, float x, float y) {
 		glVertex2f(jarak*(float)sin(n*PI/180.0)+x,jarak*(float)cos(n*PI/180.0)+y);
 	glEnd();
 }
-void panahDetik(){
+void panahDetik(){ //Panah Detik
 	glBegin(GL_POLYGON);
 	glColor3f(1,0,0);				
 	glVertex2f(0,16);
@@ -65,10 +62,9 @@ void panahDetik(){
 	glVertex2f(0,16);
 	glEnd();
 }
-void panahMenit(){
+void panahMenit(){ //Panah Menit
 	glBegin(GL_POLYGON);
-	glColor3f(0,0,1);	
-
+	glColor3f(0,0,1);
 	glVertex2f(0,14);
 	glVertex2f(1.5,12);
 	glVertex2f(0.5,12);
@@ -79,10 +75,9 @@ void panahMenit(){
 	glVertex2f(0,14);
 	glEnd();
 }
-void panahJam(){
+void panahJam(){ //Panah Jam
 	glBegin(GL_POLYGON);
-	glColor3f(0,0,0);	
-
+	glColor3f(0,0,0);
 	glVertex2f(0,12);
 	glVertex2f(1.5,10);
 	glVertex2f(0.5,10);
@@ -93,7 +88,7 @@ void panahJam(){
 	glVertex2f(0,12);
 	glEnd();
 }
-void bandul(){
+void bandul(){ //Bamdul
 	glBegin(GL_POLYGON);
 	glColor3f(1,1,1);
 	glVertex2f(0.5,-18);
@@ -108,86 +103,68 @@ void bandul(){
 	lingkaran(4.,100,0,0);
 }
 
-
-
-void kotak1(){
+void kotak1(){ //Kotak Abu"
 	glBegin(GL_POLYGON);
-	glColor3f(0.5,0.5,0.5);
-	
+	glColor3f(0.5,0.5,0.5);	
 	glVertex3f(-10, 22.5,0);
 	glVertex3f(10, 22.5,0);
 	glVertex3f(10,-32.5,0);
 	glVertex3f(-10,-32.5,0);
 	glEnd();
 	
-	glBegin(GL_POLYGON);
-	
+	glBegin(GL_POLYGON);	
 	glVertex3f(-10, 22.5,-5);
 	glVertex3f(10, 22.5,-5);
 	glVertex3f(10,-32.5,-5);
 	glVertex3f(-10,-32.5,-5);
 	glEnd();
 	
-	glBegin(GL_POLYGON);
-	
+	glBegin(GL_POLYGON);	
 	glVertex3f(-10,22.5,0);
 	glVertex3f(-10,-32.5,0);
 	glVertex3f(-10,-32.5,-5);
 	glVertex3f(-10,22.5,-5);
 	glEnd();
 	
-	glBegin(GL_POLYGON);
-	
+	glBegin(GL_POLYGON);	
 	glVertex3f(10,22.5,0);
 	glVertex3f(10,-32.5,0);
 	glVertex3f(10,-32.5,-5);
 	glVertex3f(10,22.5,-5);
-	glEnd();
-	
+	glEnd();	
 }
-void kotak2(){
+void kotak2(){ //Kotak Hijau
 	glColor3f (0.0f, 1.0f, 0.0f);
-	glBegin(GL_POLYGON);
-	
-		
+	glBegin(GL_POLYGON);		
 	glVertex3f(-5, 25,0);
 	glVertex3f(5, 25,0);
 	glVertex3f(5,-35,0);
-	glVertex3f(-5,-35,0);	
-	
+	glVertex3f(-5,-35,0);		
 	glEnd();
 	
-	glBegin(GL_POLYGON);
-	
-		
+	glBegin(GL_POLYGON);		
 	glVertex3f(-5, 25, -5);
 	glVertex3f(5, 25, -5);
 	glVertex3f(5,-35, -5);
-	glVertex3f(-5,-35, -5);	
-	
+	glVertex3f(-5,-35, -5);		
 	glEnd();
 	
-	glBegin(GL_POLYGON);
-	
+	glBegin(GL_POLYGON);	
 	glVertex3f(-5, 25, 0);
 	glVertex3f(-5, -35, 0);
 	glVertex3f(-5, -35,-5);
 	glVertex3f(-5, 25,-5);	
 	glEnd();
 	
-	glBegin(GL_POLYGON);
-	
+	glBegin(GL_POLYGON);	
 	glVertex3f(5, 25, 0);
 	glVertex3f(5, -35, 0);
 	glVertex3f(5, -35,-5);
 	glVertex3f(5, 25,-5);	
-	glEnd();
-
-	
+	glEnd();	
 }
 
 void myKeyboard(unsigned char key,int x1,int y){
-
 	if(key == 'k'){
 		x=x-10;	
 	}
@@ -196,24 +173,21 @@ void myKeyboard(unsigned char key,int x1,int y){
 	}
 }
 
-void display() {
-	
+void display() {	
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glMatrixMode(GL_MODELVIEW);
 //
 	glLoadIdentity();
 	glTranslatef(0.0f, 4.0f, -80.0f);
 	glRotatef(x, 0.0f, 1.0f, 0.0f);
-
-
 	kotak1();
+	
 	glTranslatef(0.0f, 0.0f, 0.1f);
 	kotak2();
+	
 	glTranslatef(0.0f, 0.0f, 0.1f);
-
 	glColor3f(1,1,1);;//warna putih
 	lingkaran(20,100,0,0);
-
 
 	glTranslatef(0.0f, 0.0f, 0.02f);//warna abu-abu
 	glColor3f(0.5,0.5,0.5);
@@ -223,14 +197,13 @@ void display() {
 	angka(16,0,0); //Jam
 
 	glTranslatef(0.0f, 0.0f, 0.1f);
-	menit(16,0,0); //Jam
+	menit(16,0,0); //Menit
 
 	glTranslatef(0.0f, 0.0f, 0.1f);
 	glPushMatrix();
 	glRotatef(sudut/720,0,0,1);
 	panahJam();
 	glPopMatrix();
-
 
 	glTranslatef(0.0f, 0.0f, 0.1f);
 	glPushMatrix();
@@ -260,7 +233,6 @@ void display() {
 	}
 	//
 	glutSwapBuffers();
-//	jam1 += 10.0f;
 }
 
 void timer(int value) {
