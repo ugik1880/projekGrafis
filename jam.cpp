@@ -113,21 +113,60 @@ void bandul(){
 void kotak1(){
 	glBegin(GL_POLYGON);
 	glColor3f(0.5,0.5,0.5);
-
-	glVertex2f(-10, 22.5);
-	glVertex2f(10, 22.5);
-	glVertex2f(10,-32.5);
-	glVertex2f(-10,-32.5);
+	
+	glVertex3f(-10, 22.5,0);
+	glVertex3f(10, 22.5,0);
+	glVertex3f(10,-32.5,0);
+	glVertex3f(-10,-32.5,0);
 	glEnd();
+	
+	glBegin(GL_POLYGON);
+	
+	glVertex3f(-10, 22.5,-5);
+	glVertex3f(10, 22.5,-5);
+	glVertex3f(10,-32.5,-5);
+	glVertex3f(-10,-32.5,-5);
+	glEnd();
+	
+	glBegin(GL_POLYGON);
+	
+	glVertex3f(-10,22.5,0);
+	glVertex3f(-10,-32.5,0);
+	glVertex3f(-10,-32.5,-5);
+	glVertex3f(-10,22.5,-5);
+	glEnd();
+	
+	glBegin(GL_POLYGON);
+	
+	glVertex3f(10,22.5,0);
+	glVertex3f(10,-32.5,0);
+	glVertex3f(10,-32.5,-5);
+	glVertex3f(10,22.5,-5);
+	glEnd();
+	
 }
 void kotak2(){
-	glBegin(GL_POLYGON);
 	glColor3f (0.0f, 1.0f, 0.0f);
-	glVertex2f(-5, 25);
-	glVertex2f(5, 25);
-	glVertex2f(5,-35);
-	glVertex2f(-5,-35);
+	glBegin(GL_POLYGON);
+	
+		
+	glVertex3f(-5, 25,0);
+	glVertex3f(5, 25,0);
+	glVertex3f(5,-35,0);
+	glVertex3f(-5,-35,0);	
+	
 	glEnd();
+	
+	glBegin(GL_POLYGON);
+	
+		
+	glVertex3f(-5, 25, -5);
+	glVertex3f(5, 25, -5);
+	glVertex3f(5,-35, -5);
+	glVertex3f(-5,-35, -5);	
+	
+	glEnd();
+	
 }
 
 void myKeyboard(unsigned char key,int x1,int y){
@@ -141,6 +180,7 @@ void myKeyboard(unsigned char key,int x1,int y){
 }
 
 void display() {
+	
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glMatrixMode(GL_MODELVIEW);
 //
