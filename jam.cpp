@@ -167,6 +167,23 @@ void kotak2(){
 	
 	glEnd();
 	
+	glBegin(GL_POLYGON);
+	
+	glVertex3f(-5, 25, 0);
+	glVertex3f(-5, -35, 0);
+	glVertex3f(-5, -35,-5);
+	glVertex3f(-5, 25,-5);	
+	glEnd();
+	
+	glBegin(GL_POLYGON);
+	
+	glVertex3f(5, 25, 0);
+	glVertex3f(5, -35, 0);
+	glVertex3f(5, -35,-5);
+	glVertex3f(5, 25,-5);	
+	glEnd();
+
+	
 }
 
 void myKeyboard(unsigned char key,int x1,int y){
