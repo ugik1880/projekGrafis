@@ -171,7 +171,26 @@ void myKeyboard(unsigned char key,int x1,int y){
 	else if(key =='l'){
 		x=x+10;
 	}
+	else if (key =='s') {
+		x=x-20;
+	}
+
+void keyPress(int key,int x,int y)
+{
+
+    if(key==27)
+          exit(0);
+    if (key == GLUT_KEY_UP)
+            rotate_x += .05;
+        if (key == GLUT_KEY_DOWN)
+            rotate_x -= .05;
+
+    glutPostRedisplay();
+   
+}    
 }
+
+
 
 void display() {	
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -261,6 +280,7 @@ int main(int argc, char** argv) {
 	initGL();
 	glutTimerFunc(0, timer, 0);
 	glutKeyboardFunc(myKeyboard);
+	glutSpecialFunc(keyPress);
 	glutMainLoop();
 	return 0;
 }
