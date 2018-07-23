@@ -1,17 +1,18 @@
-// Source: https://www.ntu.edu.sg/home/ehchua/programming/opengl/CG_Examples.html
-// Compile: g++ 3d.cpp -o 3d -lglut -lGL -lGLU
-
 #include "GL/glut.h"
 #define PI 3.1415926535
 #include <stdlib.h>
 #include <math.h>
 
+GLfloat jam1 = 0.0f;
 GLfloat angle = 0.0f;
 GLfloat direction = 25.0f;
-GLfloat sudut = 0;
+
+float sudut = 0;
 int i;
 int n;
-int x;
+
+int x = 0;
+
 
 void initGL() {
 	glClearColor(0.5,0.5,0.1,0);    
@@ -40,7 +41,6 @@ void angka(float jarak, float x, float y) {
 		glVertex2f(jarak*(float)sin(n*PI/180.0)+x,jarak*(float)cos(n*PI/180.0)+y);
 	glEnd();
 }
-
 void menit(float jarak, float x, float y) {
 	glPointSize(2); //Mengatur besar titik
 	glBegin(GL_POINTS);
@@ -49,7 +49,7 @@ void menit(float jarak, float x, float y) {
 		glVertex2f(jarak*(float)sin(n*PI/180.0)+x,jarak*(float)cos(n*PI/180.0)+y);
 	glEnd();
 }
-void panahDetik(){ //Panah Detik
+void panahDetik(){
 	glBegin(GL_POLYGON);
 	glColor3f(1,0,0);				
 	glVertex2f(0,16);
@@ -62,9 +62,10 @@ void panahDetik(){ //Panah Detik
 	glVertex2f(0,16);
 	glEnd();
 }
-void panahMenit(){ //Panah Menit
+void panahMenit(){
 	glBegin(GL_POLYGON);
-	glColor3f(0,0,1);
+	glColor3f(0,0,1);	
+
 	glVertex2f(0,14);
 	glVertex2f(1.5,12);
 	glVertex2f(0.5,12);
@@ -75,9 +76,10 @@ void panahMenit(){ //Panah Menit
 	glVertex2f(0,14);
 	glEnd();
 }
-void panahJam(){ //Panah Jam
+void panahJam(){
 	glBegin(GL_POLYGON);
-	glColor3f(0,0,0);
+	glColor3f(0,0,0);	
+
 	glVertex2f(0,12);
 	glVertex2f(1.5,10);
 	glVertex2f(0.5,10);
@@ -88,7 +90,7 @@ void panahJam(){ //Panah Jam
 	glVertex2f(0,12);
 	glEnd();
 }
-void bandul(){ //Bamdul
+void bandul(){
 	glBegin(GL_POLYGON);
 	glColor3f(1,1,1);
 	glVertex2f(0.5,-18);
@@ -103,110 +105,112 @@ void bandul(){ //Bamdul
 	lingkaran(4.,100,0,0);
 }
 
-void kotak1(){ //Kotak Abu"
+
+
+void kotak1(){
 	glBegin(GL_POLYGON);
-	glColor3f(0.5,0.5,0.5);	
+	glColor3f(0.5,0.5,0.5);
+	
 	glVertex3f(-10, 22.5,0);
 	glVertex3f(10, 22.5,0);
 	glVertex3f(10,-32.5,0);
 	glVertex3f(-10,-32.5,0);
 	glEnd();
 	
-	glBegin(GL_POLYGON);	
+	glBegin(GL_POLYGON);
+	
 	glVertex3f(-10, 22.5,-5);
 	glVertex3f(10, 22.5,-5);
 	glVertex3f(10,-32.5,-5);
 	glVertex3f(-10,-32.5,-5);
 	glEnd();
 	
-	glBegin(GL_POLYGON);	
+	glBegin(GL_POLYGON);
+	
 	glVertex3f(-10,22.5,0);
 	glVertex3f(-10,-32.5,0);
 	glVertex3f(-10,-32.5,-5);
 	glVertex3f(-10,22.5,-5);
 	glEnd();
 	
-	glBegin(GL_POLYGON);	
+	glBegin(GL_POLYGON);
+	
 	glVertex3f(10,22.5,0);
 	glVertex3f(10,-32.5,0);
 	glVertex3f(10,-32.5,-5);
 	glVertex3f(10,22.5,-5);
-	glEnd();	
+	glEnd();
+	
 }
-void kotak2(){ //Kotak Hijau
+void kotak2(){
 	glColor3f (0.0f, 1.0f, 0.0f);
-	glBegin(GL_POLYGON);		
+	glBegin(GL_POLYGON);
+	
+		
 	glVertex3f(-5, 25,0);
 	glVertex3f(5, 25,0);
 	glVertex3f(5,-35,0);
-	glVertex3f(-5,-35,0);		
+	glVertex3f(-5,-35,0);	
+	
 	glEnd();
 	
-	glBegin(GL_POLYGON);		
+	glBegin(GL_POLYGON);
+	
+		
 	glVertex3f(-5, 25, -5);
 	glVertex3f(5, 25, -5);
 	glVertex3f(5,-35, -5);
-	glVertex3f(-5,-35, -5);		
+	glVertex3f(-5,-35, -5);	
+	
 	glEnd();
 	
-	glBegin(GL_POLYGON);	
+	glBegin(GL_POLYGON);
+	
 	glVertex3f(-5, 25, 0);
 	glVertex3f(-5, -35, 0);
 	glVertex3f(-5, -35,-5);
 	glVertex3f(-5, 25,-5);	
 	glEnd();
 	
-	glBegin(GL_POLYGON);	
+	glBegin(GL_POLYGON);
+	
 	glVertex3f(5, 25, 0);
 	glVertex3f(5, -35, 0);
 	glVertex3f(5, -35,-5);
 	glVertex3f(5, 25,-5);	
-	glEnd();	
+	glEnd();
+
+	
 }
 
 void myKeyboard(unsigned char key,int x1,int y){
+
 	if(key == 'k'){
 		x=x-10;	
 	}
 	else if(key =='l'){
 		x=x+10;
 	}
-	else if (key =='s') {
-		x=x-20;
-	}
-
-void keyPress(int key,int x,int y)
-{
-
-    if(key==27)
-          exit(0);
-    if (key == GLUT_KEY_UP)
-            rotate_x += .05;
-        if (key == GLUT_KEY_DOWN)
-            rotate_x -= .05;
-
-    glutPostRedisplay();
-   
-}    
 }
 
-
-
-void display() {	
+void display() {
+	
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glMatrixMode(GL_MODELVIEW);
 //
 	glLoadIdentity();
 	glTranslatef(0.0f, 4.0f, -80.0f);
 	glRotatef(x, 0.0f, 1.0f, 0.0f);
+
+
 	kotak1();
-	
 	glTranslatef(0.0f, 0.0f, 0.1f);
 	kotak2();
-	
 	glTranslatef(0.0f, 0.0f, 0.1f);
+
 	glColor3f(1,1,1);;//warna putih
 	lingkaran(20,100,0,0);
+
 
 	glTranslatef(0.0f, 0.0f, 0.02f);//warna abu-abu
 	glColor3f(0.5,0.5,0.5);
@@ -216,13 +220,14 @@ void display() {
 	angka(16,0,0); //Jam
 
 	glTranslatef(0.0f, 0.0f, 0.1f);
-	menit(16,0,0); //Menit
+	menit(16,0,0); //Jam
 
 	glTranslatef(0.0f, 0.0f, 0.1f);
 	glPushMatrix();
 	glRotatef(sudut/720,0,0,1);
 	panahJam();
 	glPopMatrix();
+
 
 	glTranslatef(0.0f, 0.0f, 0.1f);
 	glPushMatrix();
@@ -252,6 +257,7 @@ void display() {
 	}
 	//
 	glutSwapBuffers();
+//	jam1 += 10.0f;
 }
 
 void timer(int value) {
@@ -280,10 +286,10 @@ int main(int argc, char** argv) {
 	initGL();
 	glutTimerFunc(0, timer, 0);
 	glutKeyboardFunc(myKeyboard);
-	glutSpecialFunc(keyPress);
 	glutMainLoop();
 	return 0;
 }
+
 
 
 
